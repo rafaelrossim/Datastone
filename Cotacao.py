@@ -1,3 +1,5 @@
+#Link da API de consumo > https://docs.awesomeapi.com.br/api-de-moedas
+
 #importações de bibliotecas
 import requests
 
