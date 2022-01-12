@@ -14,4 +14,6 @@ print(cot)
 
 #extra - dolar atual
 cot_d = cot['USDBRL']['bid']
+print (' ')
+print ('-- Informação Extra --')
 print(f'O valor atual do Dólar é ${cot_d:.4}')
