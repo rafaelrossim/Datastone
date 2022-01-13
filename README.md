@@ -13,4 +13,4 @@ A API pode ser escrita com ou sem a ajuda de frameworks (À sua escolha)
 - Solução
 O problema em questão foi solucionado consumindo a api da awesomeapi (https://docs.awesomeapi.com.br/api-de-moedas), 
 porém houve a necessidade de converter para json conforme requisitado pois a resposta da api é apenas (200 ou 400).
-Escolhi fazer um "plus" mostrando a atual cotação do dólar no final do código.
+

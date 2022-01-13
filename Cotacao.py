@@ -2,18 +2,23 @@
 
 #importações de bibliotecas
 import requests
+from fastapi import FastAPI
 
-#consumindo a API
-cot = requests.get("https://economia.awesomeapi.com.br/last/USD-BRL,USD-EUR,BTC-USD,ETH-USD")
+#declaração de variável
+app = FastAPI()
 
-#convertendo para json
-cot = cot.json()
+#processando a cotacao
+@app.get('/cotacao')
+def cotacao(de:str, para:str, valor:float):
+    #consumindo API
+    cotacao = requests.get("https://economia.awesomeapi.com.br/last/USD-BRL,USD-EUR,BTC-USD,ETH-USD")
 
-#printando o valor
-print(cot)
+    #convertendo para json
+    cotacao = cotacao.json()
 
-#extra - dolar atual
-cot_d = cot['USDBRL']['bid']
-print (' ')
-print ('-- Informação Extra --')
-print(f'O valor atual do dólar é ${cot_d:.4}')
+    #processando resultados
+    cot = cotacao[de+para]
+    result = float(cotacao[de+para]["bid"]) * valor
+
+    #retornando resultados
+    return(cot, {"conversao" : result})
