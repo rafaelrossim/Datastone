@@ -9,16 +9,15 @@ app = FastAPI()
 
 #processando a cotacao
 @app.get('/cotacao')
-def cotacao(de:str, para:str, valor:float):
+def cotacao(de:str="USD", para:str="BRL", valor:float=1):
     #consumindo API
-    cotacao = requests.get("https://economia.awesomeapi.com.br/last/USD-BRL,USD-EUR,BTC-USD,ETH-USD")
+    cotacao = requests.get(f"https://economia.awesomeapi.com.br/last/{de}-{para}")
 
     #convertendo para json
     cotacao = cotacao.json()
 
     #processando resultados
-    cot = cotacao[de+para]
     result = float(cotacao[de+para]["bid"]) * valor
 
     #retornando resultados
-    return(cot, {"conversao" : result})
+    return(cotacao, {"conversao" : result})
